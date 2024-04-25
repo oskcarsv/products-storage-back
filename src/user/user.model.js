@@ -1,0 +1,38 @@
+import mongoose from 'mongoose';
+
+const UserSchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, "Name is required"],
+  },
+  lastname: {
+    type: String,
+    required: [true, "Lastname is required"],
+  },
+  email: {
+    type: String,
+    required: [true, "Email is required"],
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: [true, "Password is required"],
+  },
+  role: {
+    type: String,
+    required: true,
+    enum: ["SUPER_ROLE", "ADMIN_ROLE", "USER_ROLE"],
+  },
+  estado: {
+    type: Boolean,
+    default: true,
+  },
+});
+
+UserSchema.methods.toJSON = function () {
+  const { __v, password, _id, ...usuario } = this.toObject();
+  usuario.uid = _id;
+  return usuario;
+};
+
+export default mongoose.model('User', UserSchema);
