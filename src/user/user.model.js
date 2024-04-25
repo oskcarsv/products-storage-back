@@ -30,9 +30,9 @@ const UserSchema = mongoose.Schema({
 });
 
 UserSchema.methods.toJSON = function () {
-  const { __v, password, _id, ...usuario } = this.toObject();
-  usuario.uid = _id;
-  return usuario;
+  const { __v, password, _id, ...user } = this.toObject();
+  user.uid = _id;
+  return user;
 };
 
 export default mongoose.model('User', UserSchema);
