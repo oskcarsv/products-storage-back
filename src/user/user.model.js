@@ -23,7 +23,7 @@ const UserSchema = mongoose.Schema({
     required: true,
     enum: ["SUPER_ROLE", "ADMIN_ROLE", "USER_ROLE"],
   },
-  estado: {
+  state: {
     type: Boolean,
     default: true,
   },
