@@ -12,6 +12,7 @@ router.post(
     "/",
     [
         check("name", "Name is required.").not().isEmpty(),
+        check("lastname", "Lastname is required").not().isEmpty(),
         check("password", "Password must be greater than 6 characters.").isLength({
             min: 6,
         }),

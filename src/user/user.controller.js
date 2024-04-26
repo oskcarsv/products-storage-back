@@ -4,8 +4,8 @@ import User from './user.model.js';
 
 
 export const createUser = async (req, res) => {
-    const { name, email, password, role } = req.body;
-    const user = new User({ name, email, password, role });
+    const { name, lastname, email, password, role } = req.body;
+    const user = new User({ name, lastname, email, password, role });
 
 
     const salt = bcryptjs.genSaltSync();
