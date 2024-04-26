@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import { createUser, updateUser, deleteUser} from "./user.controller.js";
-import { existentEmail, isValidRole, existUserWithId } from "../helpers/db-validators.js";
+import { existentEmail, isValidRole, existUserWithId } from "../helpers/db-validator.js";
 import { validateFields } from "../middlewares/validate-fields.js";
-import { hasRolee } from "../middlewares/validar-roles.js";
-import { validateJWT } from "../middlewares/validar-jwt.js";
+import { hasRole } from "../middlewares/validate-role.js";
+import { validateJWT } from "../middlewares/validate-jwt.js";
 
 const router = Router();
 
@@ -37,7 +37,7 @@ router.delete(
     "/:id",
     [
         validateJWT,
-        hasRolee("SUPER_ROLE", "ADMIN_ROLE", "USER_ROLE"),
+        hasRole("SUPER_ROLE", "ADMIN_ROLE", "USER_ROLE"),
         check("id", "This is not a valid ROLE.").isMongoId(),
         check("id").custom(existUserWithId),
         validateFields,
