@@ -10,6 +10,7 @@ import userRoutes from '../src/user/user.routes.js';
 import authRoutes from '../src/auth/auth.routes.js';
 import User from '../src/user/user.model.js';
 import Role from '../src/role/role.model.js';
+import TaskStatus from '../src/taskStatus/taskStatus.model.js'
 
 
 class Server{
@@ -43,7 +44,10 @@ class Server{
                 email: "braulio@kinal.edu.gt",
                 role: "SUPER_ROLE"
 
-            })
+            });
+            const taskStatusNOT_STARTED = new TaskStatus({taskStatusName: "NOT_STARTED"});
+            const taskStatusIN_PROGRESS = new TaskStatus({taskStatusName: "IN_PROGRESS"});
+            const taskStatusDONE = new TaskStatus({taskStatusName: "DONE"});
 
             const salt = bcryptjs.genSaltSync();
             defaultUser.password = bcryptjs.hashSync(defaultUser.password, salt);
@@ -52,6 +56,9 @@ class Server{
             await roleADMIN_ROLE.save();
             await roleUSER_ROLE.save();
             await defaultUser.save();
+            await taskStatusNOT_STARTED.save();
+            await taskStatusIN_PROGRESS.save();
+            await taskStatusDONE.save();
 
             console.log('Default credentials have been created');
 
