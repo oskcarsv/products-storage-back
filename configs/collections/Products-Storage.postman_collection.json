@@ -30,7 +30,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:3000/products-storage/v1/users",
+							"raw": "http://127.0.0.1:3000/products-storage/v1/user",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -42,7 +42,7 @@
 							"path": [
 								"products-storage",
 								"v1",
-								"users"
+								"user"
 							]
 						}
 					},
