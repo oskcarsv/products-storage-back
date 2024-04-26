@@ -11,6 +11,8 @@ const router = Router();
 router.post(
     "/",
     [
+        validateJWT,
+        hasRole("SUPER_ROLE", "ADMIN_ROLE"),
         check("name", "Name is required.").not().isEmpty(),
         check("lastname", "Lastname is required").not().isEmpty(),
         check("password", "Password must be greater than 6 characters.").isLength({
@@ -27,6 +29,8 @@ router.post(
 router.put(
     "/:id",
     [
+        validateJWT,
+        hasRole("SUPER_ROLE", "ADMIN_ROLE"),
         check("id", "This is not a valid ID.").isMongoId(),
         check("id").custom(existUserWithId),
         validateFields,
@@ -37,6 +41,8 @@ router.put(
 router.delete(
     "/:id",
     [
+        validateJWT,
+        hasRole("SUPER_ROLE"),
         validateJWT,
         hasRole("SUPER_ROLE", "ADMIN_ROLE", "USER_ROLE"),
         check("id", "This is not a valid ROLE.").isMongoId(),
