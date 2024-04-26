@@ -18,9 +18,9 @@ class Server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
-        this.usuarioPath = '/productStorage/v1/users';
-        this.authPath = '/productStorage/v1/auth';
-        this.taskPath = '/productStorage/v1/task';
+        this.usuarioPath = '/products-storage/v1/users';
+        this.authPath = '/products-storage/v1/auth';
+        this.taskPath = '/products-storage/v1/task';
 
         this.defaultUserAndRole();
         this.middlewares();
@@ -40,10 +40,10 @@ class Server{
             const roleUSER_ROLE = new Role({role: "USER_ROLE"});
             const defaultUser = new User({
 
-                name: "Braulio",
-                lastname: "Echeverria",
-                password: "admin",
-                email: "braulio@kinal.edu.gt",
+                name: "Super",
+                lastname: "Role",
+                password: "superrole123",
+                email: "super@gmail.com",
                 role: "SUPER_ROLE"
 
             });
