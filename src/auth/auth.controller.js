@@ -45,8 +45,8 @@ export const login = async (req, res) => {
 
 export const register = async (req, res) => {
   
-  const { name, lastname, email, password } = req.body;
-  const user = new User({ name, lastname, email, password, role: "USER_ROLE" });
+  const { name, username, email, password } = req.body;
+  const user = new User({ name, username, email, password, role: "USER_ROLE" });
 
 
   const salt = bcryptjs.genSaltSync();
@@ -55,6 +55,6 @@ export const register = async (req, res) => {
   await user.save();
 
   res.status(200).json({
-    msg: `${user.name} ${user.lastname} your user was created successful`
+    msg: `${user.name} your user with username ${user.username} was created successful`
   });
 }

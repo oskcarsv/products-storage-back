@@ -33,7 +33,7 @@ export const createTask = async (req, res) =>{
     await task.save();
 
     res.status(200).json({
-        msg: `${req.user.name} ${req.user.lastname} the task was created successful`
+        msg: `${req.user.name} with username ${req.user.username} the task was created successful`
     });
 
 

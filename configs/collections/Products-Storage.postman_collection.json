@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n    \"name\": \"Evan\",\r\n    \"lastname\": \"Ramirez\",\r\n    \"email\": \"evan@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"USER_ROLE\"\r\n\r\n}",
+							"raw": "{\r\n\r\n    \"name\": \"Evan\",\r\n    \"username\": \"Ramirez\",\r\n    \"email\": \"evan@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"USER_ROLE\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -94,7 +94,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Oscar\",\r\n    \"lastname\": \"Morales\",\r\n    \"password\": \"123456\",\r\n    \"email\": \"omorales@gmail.com\"\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Oscar\",\r\n    \"username\": \"Morales\",\r\n    \"password\": \"123456\",\r\n    \"email\": \"omorales@gmail.com\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"

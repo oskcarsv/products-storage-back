@@ -41,7 +41,7 @@ class Server{
             const defaultUser = new User({
 
                 name: "Super",
-                lastname: "Role",
+                username: "Role",
                 password: "superrole123",
                 email: "super@gmail.com",
                 role: "SUPER_ROLE"
