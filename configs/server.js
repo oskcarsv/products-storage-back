@@ -8,6 +8,7 @@ import bcryptjs from 'bcryptjs';
 import { dbConnection } from './mongo.js';
 import userRoutes from '../src/user/user.routes.js';
 import authRoutes from '../src/auth/auth.routes.js';
+import taskRoutes from '../src/task/task.routes.js';
 import User from '../src/user/user.model.js';
 import Role from '../src/role/role.model.js';
 import TaskStatus from '../src/taskStatus/taskStatus.model.js'
@@ -19,6 +20,7 @@ class Server{
         this.port = process.env.PORT;
         this.usuarioPath = '/productStorage/v1/users';
         this.authPath = '/productStorage/v1/auth';
+        this.taskPath = '/productStorage/v1/task';
 
         this.defaultUserAndRole();
         this.middlewares();
@@ -86,6 +88,7 @@ class Server{
     routes() {
         this.app.use(this.usuarioPath, userRoutes);
         this.app.use(this.authPath, authRoutes);
+        this.app.use(this.taskPath, taskRoutes);
     }
 
     listen(){
