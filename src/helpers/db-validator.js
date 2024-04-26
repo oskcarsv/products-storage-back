@@ -19,11 +19,19 @@ export const isValidTaskStatus = async (taskStatusName = '') => {
     }
 }
 
-export const existentEmail = async (correo = '') => {
-    const existEmail = await User.findOne({ correo });
+export const existentEmail = async (email = '') => {
+    const existEmail = await User.findOne({ email });
 
     if (existEmail) {
-        throw new Error(`The Email ${correo} was register`);
+        throw new Error(`The Email ${email} was register`);
+    }
+}
+
+export const existentUsername = async (username = '') => {
+    const existUsername = await User.findOne({ username });
+
+    if (existUsername) {
+        throw new Error(`The Username ${username} was register`);
     }
 }
 
