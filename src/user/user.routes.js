@@ -9,7 +9,7 @@ import { validateJWT } from "../middlewares/validate-jwt.js";
 const router = Router();
 
 router.post(
-    "/",
+    '/',
     [
         validateJWT,
         hasRole("SUPER_ROLE", "ADMIN_ROLE"),
@@ -17,6 +17,7 @@ router.post(
         check("username", "Username is required").not().isEmpty(),
         check("password", "Password must be greater than 6 characters.").isLength({ min: 6, }),
         check("email", "This is not a valid email.").isEmail(),
+        check("email").custom(existentEmail),
         check("username").custom(existentUsername),
         check("role").custom(isValidRole),
         validateFields,

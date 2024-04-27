@@ -14,7 +14,7 @@ export const createUser = async (req, res) => {
     await user.save();
 
     res.status(200).json({
-        user,
+        msg: `${user.name} your user was created successfully`
     });
 }
 
