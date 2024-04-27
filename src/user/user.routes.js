@@ -32,6 +32,13 @@ router.put(
         hasRole("SUPER_ROLE", "ADMIN_ROLE"),
         check("id", "This is not a valid ID.").isMongoId(),
         check("id").custom(existUserWithId),
+        check("name", "Name is required.").not().isEmpty(),
+        check("username", "Username is required").not().isEmpty(),
+        check("password", "Password must be greater than 6 characters.").isLength({ min: 6, }),
+        check("email", "This is not a valid email.").isEmail(),
+        check("email").custom(existentEmail),
+        check("username").custom(existentUsername),
+        check("role").custom(isValidRole),
         validateFields,
     ],
     updateUser
