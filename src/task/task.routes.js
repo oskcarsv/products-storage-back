@@ -29,7 +29,10 @@ router.put(
     [
         validateJWT,
         hasRole("SUPER_ROLE", "ADMIN_ROLE"),
+        check("taskName", "Task Name is required.").not().isEmpty(),
+        check("taskIntegrants", "Task Integrants is required.").not().isEmpty(),
         check("taskIntegrants").custom(existUsernameForTask),
+        check("taskStatus").custom(isValidTaskStatus),
         validateIdEmpty
     ], updateTask
 );

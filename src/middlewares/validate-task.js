@@ -1,8 +1,8 @@
-export const validateIdEmpty = (req, next) =>{
+export const validateIdEmpty = (req, res, next) =>{
 
     const {id} = req.params;
 
-    if(id == "" || id.isEmpty() || id == null){
+    if(!id || id === ""){
 
         res.status(200).json({
             msg: `Error, No ID in params.`
