@@ -46,10 +46,25 @@ export const existUserWithId = async (id = '') => {
 export const existUsernameForTask = async (taskIntegrants = []) =>{
 
     for (const integrant of taskIntegrants) {
-        const existUsername = await User.findOne({ username: integrant });
 
-        if (!existUsername) {
-            throw new Error(`We dont find a username with the name ${integrant}.`);
+        if(integrant.includes('@')){
+
+            const existEmail = await User.findOne({ email: integrant });
+
+            if(!existEmail){
+
+                throw new Error(`We dont find the email ${integrant} in the DataBase.`);
+
+            }
+
+        }else{
+
+            const existUsername = await User.findOne({ username: integrant });
+
+            if (!existUsername) {
+                throw new Error(`We dont find a username with the name ${integrant}.`);
+            }
+            
         }
     }
 
