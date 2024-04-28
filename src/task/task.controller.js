@@ -38,3 +38,17 @@ export const createTask = async (req, res) =>{
 
 
 }
+
+export const updateTask = async (req, res) =>{
+
+    const {id} = req.params;
+
+    const {_id, taskCreator, ...resto} = req.body;
+
+    await Task.findByIdAndUpdate(id, resto);
+
+    const task = await Task.findOne({_id: id});
+
+    await task.save();
+
+}

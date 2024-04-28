@@ -42,3 +42,15 @@ export const existUserWithId = async (id = '') => {
         throw new Error(`The ID: ${id} doesn't exist`);
     }
 }
+
+export const existUsernameForTask = async (taskIntegrants = []) =>{
+
+    for (const integrant of taskIntegrants) {
+        const existUsername = await User.findOne({ username: integrant });
+
+        if (!existUsername) {
+            throw new Error(`We dont find a username with the name ${integrant}.`);
+        }
+    }
+
+}
