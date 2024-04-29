@@ -70,9 +70,9 @@ export const updateTask = async (req, res = response) =>{
 
 export const deleteTask = async(req, res) =>{
 
-    const {id} = req.params;
+    const {taskId} = req.body;
 
-    const task = await Task.findByIdAndUpdate(id, {taskStatus: "CANCEL"});
+    const task = await Task.findByIdAndUpdate(taskId, {taskStatus: "CANCEL"});
 
     res.status(200).json({
         msg: `Task deleted successfully`

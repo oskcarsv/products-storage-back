@@ -38,10 +38,11 @@ router.put(
 );
 
 router.delete(
-    "/:id",
+    "/",
     [
         validateJWT,
         hasRole("SUPER_ROLE", "ADMIN_ROLE"),
+        check("taskId").custom(existTaskWithId),
         validateIdEmpty,
         validateFields,
     ],deleteTask
