@@ -41,7 +41,7 @@ export const createTask = async (req, res) =>{
 
 export const updateTask = async (req, res = response) =>{
 
-    const {id} = req.body;
+    const {taskId} = req.body;
 
     const {_id, taskCreator, ...rest} = req.body;
 
@@ -57,15 +57,16 @@ export const updateTask = async (req, res = response) =>{
     const [dayEnd, monthEnd, yearEnd] = dateEnd.split("/");
     const isoDateEnd = `${yearEnd}-${monthEnd}-${dayEnd}T${timeEnd}:00.000Z`;
 
-    await Task.findByIdAndUpdate(id, {rest, taskInitialDate: isoDateInitial, taskEndDate: isoDateEnd});
+    await Task.findByIdAndUpdate(taskId, {...rest, taskInitialDate: isoDateInitial, taskEndDate: isoDateEnd});
 
-    const task = await Task.findOne({_id: id});
+    const task = await Task.findOne({_id: taskId});
 
     res.status(200).json({
         msg: `The task was update succesfully`
     });
 
 }
+
 
 export const deleteTask = async(req, res) =>{
 
