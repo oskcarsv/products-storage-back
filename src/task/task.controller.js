@@ -78,3 +78,22 @@ export const deleteTask = async(req, res) =>{
     })
 
 }
+
+export const listTasks = async (req, res = response) => {
+
+    const { limit, from } = req.query;
+    const query = { taskStatus: {$ne:"CANCEL"} };
+
+    const [total, task] = await Promise.all([
+        Task.countDocuments(query),
+        Task.find(query)
+            .skip(Number(from))
+            .limit(Number(limit))
+    ]);
+
+    res.status(200).json({
+        total,
+        task
+    });
+
+}

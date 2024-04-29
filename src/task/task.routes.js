@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { createTask, updateTask, deleteTask } from "./task.controller.js";
+import { createTask, updateTask, deleteTask, listTasks } from "./task.controller.js";
 import { isValidTaskStatus, existUsernameForTask } from "../helpers/db-validator.js";
 import { validateFields } from "../middlewares/validate-fields.js";
 import { hasRole } from "../middlewares/validate-role.js";
@@ -8,6 +8,8 @@ import { validateJWT } from "../middlewares/validate-jwt.js";
 import {validateIdEmpty} from "../middlewares/validate-task.js";
 
 const router = Router();
+
+router.get("/", listTasks);
 
 router.post(
 
