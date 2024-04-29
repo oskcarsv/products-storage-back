@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { createTask, updateTask } from "./task.controller.js";
+import { createTask, updateTask, deleteTask } from "./task.controller.js";
 import { isValidTaskStatus, existUsernameForTask } from "../helpers/db-validator.js";
 import { validateFields } from "../middlewares/validate-fields.js";
 import { hasRole } from "../middlewares/validate-role.js";
@@ -25,16 +25,25 @@ router.post(
 );
 
 router.put(
-    "/",
+    "/:id",
     [
         validateJWT,
         hasRole("SUPER_ROLE", "ADMIN_ROLE"),
-        check("taskName", "Task Name is required.").not().isEmpty(),
-        check("taskIntegrants", "Task Integrants is required.").not().isEmpty(),
         check("taskIntegrants").custom(existUsernameForTask),
         check("taskStatus").custom(isValidTaskStatus),
-        validateIdEmpty
+        validateIdEmpty,
+        validateFields
     ], updateTask
+);
+
+router.delete(
+    "/:id",
+    [
+        validateJWT,
+        hasRole("SUPER_ROLE", "ADMIN_ROLE"),
+        validateIdEmpty,
+        validateFields,
+    ],deleteTask
 );
 
 export default router;

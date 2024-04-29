@@ -50,6 +50,7 @@ class Server{
             const taskStatusNOT_STARTED = new TaskStatus({taskStatusName: "NOT_STARTED"});
             const taskStatusIN_PROGRESS = new TaskStatus({taskStatusName: "IN_PROGRESS"});
             const taskStatusDONE = new TaskStatus({taskStatusName: "DONE"});
+            const taskStatusCANCEL = new TaskStatus({taskStatusName: "CANCEL"});
 
             const salt = bcryptjs.genSaltSync();
             defaultUser.password = bcryptjs.hashSync(defaultUser.password, salt);
@@ -61,6 +62,7 @@ class Server{
             await taskStatusNOT_STARTED.save();
             await taskStatusIN_PROGRESS.save();
             await taskStatusDONE.save();
+            await taskStatusCANCEL.save();
 
             console.log('Default credentials have been created');
 
