@@ -8,16 +8,19 @@ import bcryptjs from 'bcryptjs';
 import { dbConnection } from './mongo.js';
 import userRoutes from '../src/user/user.routes.js';
 import authRoutes from '../src/auth/auth.routes.js';
+import taskRoutes from '../src/task/task.routes.js';
 import User from '../src/user/user.model.js';
 import Role from '../src/role/role.model.js';
+import TaskStatus from '../src/taskStatus/taskStatus.model.js'
 
 
 class Server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
-        this.usuarioPath = '/productStorage/v1/users';
-        this.authPath = '/productStorage/v1/auth';
+        this.usuarioPath = '/products-storage/v1/user';
+        this.authPath = '/products-storage/v1/auth';
+        this.taskPath = '/products-storage/v1/task';
 
         this.defaultUserAndRole();
         this.middlewares();
@@ -37,13 +40,17 @@ class Server{
             const roleUSER_ROLE = new Role({role: "USER_ROLE"});
             const defaultUser = new User({
 
-                name: "Braulio",
-                lastname: "Echeverria",
-                password: "admin",
-                email: "braulio@kinal.edu.gt",
+                name: "Super",
+                username: "Role",
+                password: "superrole123",
+                email: "super@gmail.com",
                 role: "SUPER_ROLE"
 
-            })
+            });
+            const taskStatusNOT_STARTED = new TaskStatus({taskStatusName: "NOT_STARTED"});
+            const taskStatusIN_PROGRESS = new TaskStatus({taskStatusName: "IN_PROGRESS"});
+            const taskStatusDONE = new TaskStatus({taskStatusName: "DONE"});
+            const taskStatusCANCEL = new TaskStatus({taskStatusName: "CANCEL"});
 
             const salt = bcryptjs.genSaltSync();
             defaultUser.password = bcryptjs.hashSync(defaultUser.password, salt);
@@ -52,6 +59,10 @@ class Server{
             await roleADMIN_ROLE.save();
             await roleUSER_ROLE.save();
             await defaultUser.save();
+            await taskStatusNOT_STARTED.save();
+            await taskStatusIN_PROGRESS.save();
+            await taskStatusDONE.save();
+            await taskStatusCANCEL.save();
 
             console.log('Default credentials have been created');
 
@@ -79,6 +90,7 @@ class Server{
     routes() {
         this.app.use(this.usuarioPath, userRoutes);
         this.app.use(this.authPath, authRoutes);
+        this.app.use(this.taskPath, taskRoutes);
     }
 
     listen(){
