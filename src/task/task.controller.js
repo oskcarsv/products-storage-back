@@ -43,21 +43,21 @@ export const updateTask = async (req, res = response) =>{
 
     const {id} = req.body;
 
-    const {_id, taskCreator, ...resto} = req.body;
+    const {_id, taskCreator, ...rest} = req.body;
 
-    const datePartsInitial = resto.taskInitialDate.split(" ");
+    const datePartsInitial = rest.taskInitialDate.split(" ");
     const dateInitial = datePartsInitial[0];
     const timeInitial = datePartsInitial[1];
     const [dayInitial, monthInitial, yearInitial] = dateInitial.split("/");
     const isoDateInitial = `${yearInitial}-${monthInitial}-${dayInitial}T${timeInitial}:00.000Z`;
 
-    const datePartsEnd = resto.taskEndDate.split(" ");
+    const datePartsEnd = rest.taskEndDate.split(" ");
     const dateEnd = datePartsEnd[0];
     const timeEnd = datePartsEnd[1];
     const [dayEnd, monthEnd, yearEnd] = dateEnd.split("/");
     const isoDateEnd = `${yearEnd}-${monthEnd}-${dayEnd}T${timeEnd}:00.000Z`;
 
-    await Task.findByIdAndUpdate(id, {resto, taskInitialDate: isoDateInitial, taskEndDate: isoDateEnd});
+    await Task.findByIdAndUpdate(id, {rest, taskInitialDate: isoDateInitial, taskEndDate: isoDateEnd});
 
     const task = await Task.findOne({_id: id});
 
