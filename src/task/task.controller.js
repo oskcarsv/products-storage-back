@@ -75,7 +75,7 @@ export const deleteTask = async(req, res) =>{
     const task = await Task.findByIdAndUpdate(id, {taskStatus: "CANCEL"});
 
     res.status(200).json({
-        msg: `TASK deleted successfully`
+        msg: `Task deleted successfully`
     })
 
 }
