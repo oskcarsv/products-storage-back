@@ -12,7 +12,6 @@ const router = Router();
 router.get("/", listTasks);
 
 router.post(
-
     "/",
     [
         validateJWT,
@@ -27,7 +26,7 @@ router.post(
 );
 
 router.put(
-    "/:id",
+    "/",
     [
         validateJWT,
         hasRole("SUPER_ROLE", "ADMIN_ROLE"),

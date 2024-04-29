@@ -6,11 +6,11 @@ export const createTask = async (req, res) =>{
 
     const {taskName, taskIntegrants, taskInitialDate, taskEndDate, taskStatus} = req.body;
 
-    const datePartsIntial = taskInitialDate.split(" ");
-    const dateIntial = datePartsIntial[0];
-    const timeIntial = datePartsIntial[1];
-    const [dayInitial, monthInitial, yearInitial] = dateIntial.split("/");
-    const isoDateInitial = `${yearInitial}-${monthInitial}-${dayInitial}T${timeIntial}:00.000Z`;
+    const datePartsInitial = taskInitialDate.split(" ");
+    const dateInitial = datePartsInitial[0];
+    const timeInitial = datePartsInitial[1];
+    const [dayInitial, monthInitial, yearInitial] = dateInitial.split("/");
+    const isoDateInitial = `${yearInitial}-${monthInitial}-${dayInitial}T${timeInitial}:00.000Z`;
 
     const datePartsEnd = taskEndDate.split(" ");
     const dateEnd = datePartsEnd[0];
@@ -41,15 +41,15 @@ export const createTask = async (req, res) =>{
 
 export const updateTask = async (req, res = response) =>{
 
-    const {id} = req.params;
+    const {id} = req.body;
 
     const {_id, taskCreator, ...resto} = req.body;
 
-    const datePartsIntial = resto.taskInitialDate.split(" ");
-    const dateIntial = datePartsIntial[0];
-    const timeIntial = datePartsIntial[1];
-    const [dayInitial, monthInitial, yearInitial] = dateIntial.split("/");
-    const isoDateInitial = `${yearInitial}-${monthInitial}-${dayInitial}T${timeIntial}:00.000Z`;
+    const datePartsInitial = resto.taskInitialDate.split(" ");
+    const dateInitial = datePartsInitial[0];
+    const timeInitial = datePartsInitial[1];
+    const [dayInitial, monthInitial, yearInitial] = dateInitial.split("/");
+    const isoDateInitial = `${yearInitial}-${monthInitial}-${dayInitial}T${timeInitial}:00.000Z`;
 
     const datePartsEnd = resto.taskEndDate.split(" ");
     const dateEnd = datePartsEnd[0];
