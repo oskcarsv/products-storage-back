@@ -3,6 +3,8 @@ import Role from '../role/role.model.js';
 
 import User from '../user/user.model.js';
 
+import Task from '../task/task.model.js';
+
 import TaskStatus from '../taskStatus/taskStatus.model.js';
 
 export const isValidRole = async (role = '') => {
@@ -39,7 +41,15 @@ export const existUserWithId = async (id = '') => {
     const existUser = await User.findById(id);
 
     if (!existUser) {
-        throw new Error(`The ID: ${id} doesn't exist`);
+        throw new Error(`The User with ID: ${id} doesn't exist`);
+    }
+}
+
+export const existTaskWithId = async (id = '') => {
+    const existTask = await Task.findById(id);
+
+    if (!existTask) {
+        throw new Error(`The task with ID: ${id} doesn't exist`);
     }
 }
 
