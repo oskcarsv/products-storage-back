@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "acc03600-ac1f-491f-bc59-4c4105fd9ec0",
+		"name": "Products-Storage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32787267"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjJhZmQxNDk3YTg3ZjY1NzE0ZWJiMjYiLCJpYXQiOjE3MTQxMDA1OTYsImV4cCI6MTcxNDEwNzc5Nn0.8w2d2s4Ca9NMkkWydeHdz-xDpP4gvJBwYij21uCM7TE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"name\": \"Evan\",\r\n    \"username\": \"Ramirez\",\r\n    \"email\": \"evan@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"USER_ROLE\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/products-storage/v1/user",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"products-storage",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usernameOrEmail\": \"omorales@gmail.com\",\r\n    \"password\": \"a1B$3c3!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/products-storage/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"products-storage",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Oscar\",\r\n    \"username\": \"omorales\",\r\n    \"password\": \"a1B$3c3!\",\r\n    \"email\": \"omorales@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/products-storage/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"products-storage",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjJhZmQxNDk3YTg3ZjY1NzE0ZWJiMjYiLCJpYXQiOjE3MTQxMDU4NzUsImV4cCI6MTcxNDExMzA3NX0.tnl74yuVJZ0lWB6laoshkCANaXvmdiEnCqCNTuaz_tg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"taskName\": \"Limpiar Procesador\",\r\n    \"taskIntegrants\": [\"Jorge\", \"Pedro\"],\r\n    \"taskInitialDate\": \"15/08/2024 08:00 \",\r\n    \"taskEndDate\": \"15/09/2024 23:59 \",\r\n    \"taskStatus\": \"NOT_STARTED\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/products-storage/v1/task",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"products-storage",
+								"v1",
+								"task"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
