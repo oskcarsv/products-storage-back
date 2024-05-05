@@ -9,6 +9,13 @@ const TaskSchema = mongoose.Schema({
 
     },
 
+    taskDescription: {
+
+        type: String,
+        required: [true, "Task Description is required"]
+        
+    },
+
     taskCreator: {
 
         type: String,
@@ -46,4 +53,4 @@ const TaskSchema = mongoose.Schema({
 
 });
 
-export  default mongoose.model('Task', TaskSchema);
+export default mongoose.model('Task', TaskSchema);
