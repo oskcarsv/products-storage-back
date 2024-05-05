@@ -78,7 +78,7 @@ export const deleteTask = async(req, res) =>{
 
 }
 
-export const listTasks = async (req, res = response) => {
+export const listTask = async (req, res = response) => {
 
     const { limit, from } = req.query;
     const query = { taskStatus: {$ne:"CANCEL"} };
@@ -95,4 +95,30 @@ export const listTasks = async (req, res = response) => {
         task
     });
 
+}
+
+export const listTaskByUser = async (req, res = response) => {
+
+    try {
+        
+        const { limit, from } = req.query;
+        const { name } = req.user;
+        const query = { taskStatus: {$ne:"CANCEL"}, taskCreator: name };
+
+        const [total, task] = await Promise.all([
+            Task.countDocuments(query),
+            Task.find(query)
+                .skip(Number(from))
+                .limit(Number(limit))
+        ]);
+
+        res.status(200).json({
+            total,
+            task
+        });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error ocurred when try to list the task by user.");
+    }
 }
