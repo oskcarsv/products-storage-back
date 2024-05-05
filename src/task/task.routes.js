@@ -16,7 +16,6 @@ router.post(
     "/",
     [
         validateJWT,
-        hasRole("SUPER_ROLE", "ADMIN_ROLE", "USER_ROLE"),
         check("taskName", "Task Name is required.").not().isEmpty(),
         isAdminOrSuperRole,
         check("taskIntegrants").custom(existUsernameForTask),
