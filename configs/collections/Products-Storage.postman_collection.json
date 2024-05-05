@@ -139,7 +139,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n    \"taskName\": \"Limpiar Procesador\",\r\n    \"taskIntegrants\": [\"Jorge\", \"Pedro\"],\r\n    \"taskInitialDate\": \"15/08/2024 08:00 \",\r\n    \"taskEndDate\": \"15/09/2024 23:59 \",\r\n    \"taskStatus\": \"NOT_STARTED\"\r\n\r\n}",
+							"raw": "{\r\n\r\n    \"taskName\": \"Limpiar Procesador\",\r\n  \"taskDescription\": \"New task\",\r\n  \"taskIntegrants\": [\"Jorge\", \"Pedro\"],\r\n    \"taskInitialDate\": \"15/08/2024 08:00 \",\r\n    \"taskEndDate\": \"15/09/2024 23:59 \",\r\n    \"taskStatus\": \"NOT_STARTED\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

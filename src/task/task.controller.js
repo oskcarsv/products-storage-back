@@ -23,7 +23,7 @@ export const createTask = async (req, res) =>{
         taskName,
         taskDescription,
         taskCreator: req.user.name,
-        taskIntegrants,
+        taskIntegrants: req.user.role === 'USER_ROLE' ? undefined : taskIntegrants,
         taskInitialDate: isoDateInitial,
         taskEndDate: isoDateEnd,
         taskStatus
@@ -36,7 +36,6 @@ export const createTask = async (req, res) =>{
         msg: `${req.user.name} with username ${req.user.username} the task was created successful`
     });
 };
-
 
 export const updateTask = async (req, res = response) =>{
 

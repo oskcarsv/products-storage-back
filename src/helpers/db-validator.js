@@ -53,6 +53,22 @@ export const existTaskWithId = async (id = '') => {
     }
 }
 
+export const isAdminOrSuperRole = (req, res, next) => {
+    if(req.user.role === 'USER_ROLE' && req.body.taskIntegrants){
+        return res.status(400).json({
+            errors: [
+                {
+                    type: "field",
+                    msg: "Only administrators can assign tasks to users",
+                    path: "taskIntegrants",
+                    location: "body"
+                }
+            ]
+        });
+    }
+    next();
+}
+
 export const existUsernameForTask = async (taskIntegrants = []) =>{
 
     for (const integrant of taskIntegrants) {
@@ -79,3 +95,4 @@ export const existUsernameForTask = async (taskIntegrants = []) =>{
     }
 
 }
+
