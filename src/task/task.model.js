@@ -12,8 +12,7 @@ const TaskSchema = mongoose.Schema({
     taskDescription: {
 
         type: String,
-        required: [true, "Task Description is required"]
-        
+
     },
 
     taskCreator: {
@@ -26,7 +25,6 @@ const TaskSchema = mongoose.Schema({
     taskIntegrants: {
 
         type: [String],
-        required: [true, "The Integrants of the Task is required"]
 
     },
 

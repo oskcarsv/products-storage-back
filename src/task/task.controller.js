@@ -4,7 +4,7 @@ import {format} from 'date-fns';
 
 export const createTask = async (req, res) =>{
 
-    const {taskName, taskIntegrants, taskInitialDate, taskEndDate, taskStatus} = req.body;
+    const {taskName, taskDescription, taskIntegrants, taskInitialDate, taskEndDate, taskStatus} = req.body;
 
     const datePartsInitial = taskInitialDate.split(" ");
     const dateInitial = datePartsInitial[0];
@@ -21,12 +21,12 @@ export const createTask = async (req, res) =>{
     const task = Task({
 
         taskName,
+        taskDescription,
         taskCreator: req.user.name,
         taskIntegrants,
         taskInitialDate: isoDateInitial,
         taskEndDate: isoDateEnd,
         taskStatus
-
 
     });
 
@@ -35,9 +35,8 @@ export const createTask = async (req, res) =>{
     res.status(200).json({
         msg: `${req.user.name} with username ${req.user.username} the task was created successful`
     });
+};
 
-
-}
 
 export const updateTask = async (req, res = response) =>{
 
