@@ -9,6 +9,12 @@ const TaskSchema = mongoose.Schema({
 
     },
 
+    taskDescription: {
+
+        type: String,
+
+    },
+
     taskCreator: {
 
         type: String,
@@ -19,7 +25,6 @@ const TaskSchema = mongoose.Schema({
     taskIntegrants: {
 
         type: [String],
-        required: [true, "The Integrants of the Task is required"]
 
     },
 
@@ -46,4 +51,4 @@ const TaskSchema = mongoose.Schema({
 
 });
 
-export  default mongoose.model('Task', TaskSchema);
+export default mongoose.model('Task', TaskSchema);
